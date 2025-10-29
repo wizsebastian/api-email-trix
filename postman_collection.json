@@ -23,6 +23,11 @@
   "variable": [
     {
       "key": "base_url",
+      "value": "https://api-email-trix-itiecl748-infogmtechdogmailcoms-projects.vercel.app",
+      "type": "string"
+    },
+    {
+      "key": "base_url_local",
       "value": "http://localhost:3000",
       "type": "string"
     },
