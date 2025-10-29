@@ -23,12 +23,12 @@
   "variable": [
     {
       "key": "base_url",
-      "value": "https://api-email-trix-itiecl748-infogmtechdogmailcoms-projects.vercel.app",
+      "value": "http://localhost:3000",
       "type": "string"
     },
     {
-      "key": "base_url_local",
-      "value": "http://localhost:3000",
+      "key": "base_url_prod",
+      "value": "https://api-email-trix-63lytnvzj-infogmtechdogmailcoms-projects.vercel.app",
       "type": "string"
     },
     {
