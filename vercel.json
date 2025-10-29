@@ -11,9 +11,5 @@
       "src": "/(.*)",
       "dest": "index.js"
     }
-  ],
-  "env": {
-    "RESEND_API_KEY": "@resend_api_key",
-    "X_API_KEY": "@x_api_key"
-  }
+  ]
 }
