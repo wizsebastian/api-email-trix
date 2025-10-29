@@ -1,26 +1,24 @@
 {
-  "name": "web-server",
-  "version": "0.1.0",
-  "private": true,
+  "name": "mi-api-mail",
+  "version": "1.0.0",
+  "description": "API serverless para envío de emails con autenticación",
+  "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "node index.js",
+    "dev": "node index.js"
   },
+  "keywords": [
+    "api",
+    "email",
+    "resend",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "next": "16.0.1"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.1"
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "resend": "^6.3.0"
   }
 }

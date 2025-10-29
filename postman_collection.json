@@ -1,0 +1,371 @@
+{
+  "info": {
+    "name": "API Mail Server",
+    "description": "Colección para probar la API de envío de emails con autenticación",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-api-key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "gxtr_2024_secure_api_key_auth_mail_server_v1",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "api_key",
+      "value": "gxtr_2024_secure_api_key_auth_mail_server_v1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        },
+        "description": "Endpoint para verificar que la API esté funcionando correctamente"
+      },
+      "response": []
+    },
+    {
+      "name": "Send Email - Contact Form",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email_type\": \"contact\",\n  \"name\": \"Juan Pérez\",\n  \"phone\": \"+1234567890\",\n  \"email\": \"juan@example.com\",\n  \"message\": \"Hola, me interesa conocer más sobre sus servicios. ¿Podrían contactarme?\",\n  \"whatsapp_check\": true,\n  \"meta\": {\n    \"source\": \"website\",\n    \"page\": \"contact\",\n    \"utm_campaign\": \"summer_2024\",\n    \"ip\": \"192.168.1.1\"\n  }\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/send-email",
+          "host": ["{{base_url}}"],
+          "path": ["send-email"]
+        },
+        "description": "Envía un email de contacto con todos los campos completos"
+      },
+      "response": []
+    },
+    {
+      "name": "Send Email - Support Request",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email_type\": \"support\",\n  \"name\": \"María García\",\n  \"phone\": \"+5491234567890\",\n  \"email\": \"maria.garcia@company.com\",\n  \"message\": \"Tengo un problema con mi cuenta. No puedo acceder desde ayer por la tarde.\",\n  \"whatsapp_check\": false,\n  \"meta\": {\n    \"priority\": \"high\",\n    \"category\": \"account_access\",\n    \"user_id\": \"usr_12345\"\n  }\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/send-email",
+          "host": ["{{base_url}}"],
+          "path": ["send-email"]
+        },
+        "description": "Envía un email de soporte técnico"
+      },
+      "response": []
+    },
+    {
+      "name": "Send Email - Sales Inquiry",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email_type\": \"sales\",\n  \"name\": \"Roberto Silva\",\n  \"email\": \"roberto@startup.com\",\n  \"message\": \"Estamos evaluando su solución para nuestra startup. ¿Tienen descuentos para empresas nuevas?\",\n  \"whatsapp_check\": true,\n  \"meta\": {\n    \"company\": \"TechStartup Inc\",\n    \"employees\": \"10-50\",\n    \"budget_range\": \"$1000-5000\"\n  }\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/send-email",
+          "host": ["{{base_url}}"],
+          "path": ["send-email"]
+        },
+        "description": "Envía un email de consulta de ventas (sin teléfono para probar campo opcional)"
+      },
+      "response": []
+    },
+    {
+      "name": "Send Email - Minimal Required Fields",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Ana López\",\n  \"email\": \"ana@test.com\",\n  \"message\": \"Mensaje de prueba con campos mínimos requeridos\",\n  \"whatsapp_check\": false\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/send-email",
+          "host": ["{{base_url}}"],
+          "path": ["send-email"]
+        },
+        "description": "Envía un email solo con los campos requeridos (name, email, message)"
+      },
+      "response": []
+    },
+    {
+      "name": "Send Email - Invalid API Key",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "invalid_api_key_123"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"message\": \"Este request debería fallar por API key inválida\",\n  \"whatsapp_check\": false\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/send-email",
+          "host": ["{{base_url}}"],
+          "path": ["send-email"]
+        },
+        "description": "Prueba el endpoint con una API key inválida (debería retornar 401)"
+      },
+      "response": []
+    },
+    {
+      "name": "Send Email - Missing Required Fields",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"whatsapp_check\": false\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/send-email",
+          "host": ["{{base_url}}"],
+          "path": ["send-email"]
+        },
+        "description": "Prueba el endpoint sin campos requeridos (debería retornar 400)"
+      },
+      "response": []
+    },
+    {
+      "name": "Send Email - No API Key",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"message\": \"Este request debería fallar por falta de API key\",\n  \"whatsapp_check\": false\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/send-email",
+          "host": ["{{base_url}}"],
+          "path": ["send-email"]
+        },
+        "description": "Prueba el endpoint sin API key (debería retornar 401)"
+      },
+      "response": []
+    },
+    {
+      "name": "Request Demo GTS - Complete",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Carlos Mendoza\",\n  \"phone\": \"+5491123456789\",\n  \"email\": \"carlos.mendoza@logistics.com\",\n  \"company\": \"LogiTech Solutions\",\n  \"message\": \"Necesitamos una solución de tracking para nuestra flota de 50 vehículos. ¿El GTS puede manejar tracking en tiempo real y generar reportes automáticos?\",\n  \"whatsapp_check\": true,\n  \"meta\": {\n    \"industry\": \"logistics\",\n    \"fleet_size\": \"50\",\n    \"priority\": \"high\",\n    \"source\": \"website\",\n    \"utm_campaign\": \"demo_request_2024\"\n  }\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/request-demo",
+          "host": ["{{base_url}}"],
+          "path": ["request-demo"]
+        },
+        "description": "Solicita una demo completa del GTS con todos los campos"
+      },
+      "response": []
+    },
+    {
+      "name": "Request Demo GTS - Mining Company",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Ana Vázquez\",\n  \"phone\": \"+5621987654321\",\n  \"email\": \"ana.vazquez@mining.com\",\n  \"company\": \"Minera del Norte SA\",\n  \"message\": \"Operamos en zonas remotas y necesitamos tracking de personal y maquinaria pesada. ¿El GTS funciona sin conectividad continua?\",\n  \"whatsapp_check\": false,\n  \"meta\": {\n    \"industry\": \"mining\",\n    \"location\": \"remote_areas\",\n    \"assets\": \"personnel_machinery\",\n    \"challenge\": \"connectivity\"\n  }\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/request-demo",
+          "host": ["{{base_url}}"],
+          "path": ["request-demo"]
+        },
+        "description": "Solicitud de demo para empresa minera con desafíos específicos"
+      },
+      "response": []
+    },
+    {
+      "name": "Request Demo GTS - Minimal Fields",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Roberto Silva\",\n  \"email\": \"roberto@startup.com\",\n  \"company\": \"TechStartup Inc\",\n  \"whatsapp_check\": true\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/request-demo",
+          "host": ["{{base_url}}"],
+          "path": ["request-demo"]
+        },
+        "description": "Solicitud de demo con campos mínimos requeridos (name, email, company)"
+      },
+      "response": []
+    },
+    {
+      "name": "Request Demo GTS - Missing Company",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"message\": \"Quiero ver el GTS pero falta el campo company\",\n  \"whatsapp_check\": false\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/request-demo",
+          "host": ["{{base_url}}"],
+          "path": ["request-demo"]
+        },
+        "description": "Prueba el endpoint sin campo company requerido (debería retornar 400)"
+      },
+      "response": []
+    },
+    {
+      "name": "Request Demo GTS - Invalid API Key",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "invalid_demo_key_123"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"company\": \"Test Company\",\n  \"message\": \"Este request debería fallar por API key inválida\",\n  \"whatsapp_check\": false\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/request-demo",
+          "host": ["{{base_url}}"],
+          "path": ["request-demo"]
+        },
+        "description": "Prueba el endpoint de demo con API key inválida (debería retornar 401)"
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Demo GTS - TRIX</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo {
+            margin-bottom: 20px;
+        }
+        
+        .logo h1 {
+            font-size: 48px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 6px;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-family: 'Arial Black', Arial, sans-serif;
+        }
+        
+        .tagline {
+            color: #d1fae5;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+        
+        .content {
+            padding: 40px 30px;
+            background-color: #ffffff;
+        }
+        
+        .greeting {
+            font-size: 26px;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .message {
+            font-size: 16px;
+            color: #4b5563;
+            margin-bottom: 30px;
+            line-height: 1.7;
+            text-align: center;
+        }
+        
+        .confirmation-box {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 1px solid #10b981;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .confirmation-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .confirmation-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #064e3b;
+            margin-bottom: 10px;
+        }
+        
+        .confirmation-text {
+            font-size: 14px;
+            color: #047857;
+        }
+        
+        .demo-info-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .demo-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0c4a6e;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .demo-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .demo-feature {
+            text-align: center;
+            padding: 20px 15px;
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .feature-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #0369a1;
+            margin-bottom: 5px;
+        }
+        
+        .feature-desc {
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        .next-steps-section {
+            background: #fefce8;
+            border: 1px solid #eab308;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .next-steps-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #854d0e;
+            margin-bottom: 15px;
+        }
+        
+        .next-steps-list {
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 15px 0;
+            color: #a16207;
+            font-size: 14px;
+        }
+        
+        .step-number {
+            background: #eab308;
+            color: #ffffff;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 12px;
+            min-width: 24px;
+        }
+        
+        .contact-section {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .contact-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4b5563;
+            font-size: 14px;
+        }
+        
+        .contact-item .icon {
+            font-size: 16px;
+        }
+        
+        .footer {
+            background: #f1f5f9;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .company-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 10px;
+        }
+        
+        .footer-text {
+            font-size: 12px;
+            color: #64748b;
+            margin: 5px 0;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: #10b981;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .copyright {
+            font-size: 11px;
+            color: #94a3b8;
+            margin-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                border-radius: 0;
+                border: none;
+            }
+            
+            .header, .content, .footer {
+                padding: 25px 20px;
+            }
+            
+            .logo h1 {
+                font-size: 36px;
+                letter-spacing: 4px;
+            }
+            
+            .greeting {
+                font-size: 22px;
+            }
+            
+            .demo-features {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header with TRIX Logo -->
+        <div class="header">
+            <div class="logo">
+                <h1>TRIX</h1>
+                <div class="tagline">Sistemas Geoespaciales Inteligentes</div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="content">
+            <div class="greeting">¡Tu Demo GTS está en Camino!</div>
+            
+            <div class="message">
+                Hemos recibido tu solicitud para una demostración personalizada del 
+                <strong>Geo Tracking System (GTS)</strong>. Nuestro equipo de especialistas 
+                preparará una presentación adaptada a tus necesidades específicas.
+            </div>
+            
+            <!-- Confirmation Box -->
+            <div class="confirmation-box">
+                <span class="confirmation-icon">🚀</span>
+                <div class="confirmation-title">Solicitud de Demo Procesada</div>
+                <div class="confirmation-text">
+                    Un agente especializado se contactará contigo dentro de las próximas 24 horas 
+                    para coordinar tu demostración personalizada del GTS.
+                </div>
+            </div>
+            
+            <!-- Demo Features Section -->
+            <div class="demo-info-section">
+                <div class="demo-title">Qué Verás en tu Demo del GTS</div>
+                <div class="demo-features">
+                    <div class="demo-feature">
+                        <span class="feature-icon">📍</span>
+                        <div class="feature-name">Tracking en Tiempo Real</div>
+                        <div class="feature-desc">Monitoreo continuo de activos y personal</div>
+                    </div>
+                    <div class="demo-feature">
+                        <span class="feature-icon">📊</span>
+                        <div class="feature-name">Dashboards Inteligentes</div>
+                        <div class="feature-desc">Análisis de datos geoespaciales avanzados</div>
+                    </div>
+                    <div class="demo-feature">
+                        <span class="feature-icon">🔔</span>
+                        <div class="feature-name">Alertas Automáticas</div>
+                        <div class="feature-desc">Notificaciones basadas en geofencing</div>
+                    </div>
+                    <div class="demo-feature">
+                        <span class="feature-icon">📱</span>
+                        <div class="feature-name">App Móvil</div>
+                        <div class="feature-desc">Acceso desde cualquier dispositivo</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Next Steps Section -->
+            <div class="next-steps-section">
+                <div class="next-steps-title">Próximos Pasos</div>
+                <div class="next-steps-list">
+                    <div class="step-item">
+                        <span class="step-number">1</span>
+                        <span>Nuestro agente te contactará para coordinar fecha y hora</span>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">2</span>
+                        <span>Preparamos una demo personalizada según tu industria</span>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">3</span>
+                        <span>Realizamos la demostración en vivo del GTS</span>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">4</span>
+                        <span>Discutimos opciones de implementación y pricing</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="contact-section">
+                <div class="contact-title">¿Preguntas sobre el GTS?</div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="icon">📧</span>
+                        <span>gts@trixgeo.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">🌐</span>
+                        <span>www.trixgeo.com/gts</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📱</span>
+                        <span>WhatsApp disponible</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="company-name">TRIX - Geo Tracking System</div>
+            <div class="footer-text">La solución más avanzada en tracking geoespacial</div>
+            
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+                <a href="#">Facebook</a>
+                <a href="#">GitHub</a>
+            </div>
+            
+            <div class="copyright">
+                © 2025 TRIX. Todos los derechos reservados.<br>
+                Este email fue enviado porque solicitaste una demo del GTS.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
